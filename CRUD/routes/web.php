@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::resource('students', StudentController::class);
+Route::get('students/archeive/{id}',[StudentController::class,'archeived'])->name('students.archeive');
+Route::get('students/trashed',[StudentController::class,'show']);
+Route::get('students/restore/{id}',[StudentController::class,'restore'])->name('students.restore');
